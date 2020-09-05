@@ -177,6 +177,7 @@ class ToppingPage(tk.Frame):
             self.controller.program_data["toppings"].append("Mushrooms")
         self.controller.show_frame("Bill")
 
+
 if __name__ == "__main__":
     start = PageContainer()
     start.mainloop()
