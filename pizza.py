@@ -56,13 +56,6 @@ class PageContainer(tk.Tk):
             frame = self.frames[page_name]
             frame.tkraise()
 
-    def get_page(self, classname):
-        # Allows pages to load other pages in order to facilitate inter-page communication
-        for page in self.frames.values():
-            if str(page.__class__.__name__) == classname:
-                return page
-        return None
-
 
 # This is the frame for the home page
 class HomePage(tk.Frame):
