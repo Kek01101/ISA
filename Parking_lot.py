@@ -12,12 +12,9 @@ class ParkingLot(tk.Tk):
         self.configure(bg="white")
         self.title("Premier digital parking lot software")
         self.geometry("370x200")
-        inbutton = tk.Button(self, text="Check in", command=self.check_in, font=(None, 20),
-                             bg="white", height=2, width=8)
-        outbutton = tk.Button(self, text="Check out", command=self.check_out, font=(None, 20),
-                              bg="white", height=2, width=8)
-        inbutton.pack()
-        outbutton.pack()
+        self.inbutton = tk.Button(self, text="Check in", command=self.check_in, font=(None, 40),
+                             bg="white", height=10, width=10)
+        self.inbutton.pack()
 
         self.checkin = False
         self.time = 0
@@ -29,6 +26,10 @@ class ParkingLot(tk.Tk):
         if self.checkin:
             tk.messagebox.showerror("Error", "You have already checked-in!")
         else:
+            self.inbutton.destroy()
+            self.inbutton = tk.Button(self, text="Check out", command=self.check_out, font=(None, 40),
+                              bg="white", height=10, width=10)
+            self.inbutton.pack()
             self.checkin = True
             self.time = datetime.datetime.now()
 
@@ -40,6 +41,10 @@ class ParkingLot(tk.Tk):
         else:
             # Will not work if a day has passed since the code started
             self.checkin = False
+            self.inbutton.destroy()
+            self.inbutton = tk.Button(self, text="Check in", command=self.check_in, font=(None, 40),
+                             bg="white", height=10, width=10)
+            self.inbutton.pack()
             self.time = datetime.datetime.now() - self.time
             self.time = str(self.time).split(":")
             for hour in range(0, int(self.time[0])):
