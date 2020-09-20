@@ -1,7 +1,6 @@
 # 21/9/2020, Blue, Nicolas Keck, This program runs a text-based storefront for vacuum cleaners
 # Extension: Program takes part in dishonest business practice and will raise the prices of cheaper vacuums to be closer
-# to the maximum price. I have basically turned this vacuum store into a commercial airline. It also adds sales tax to
-# the product at the sale, not beforehand, so the customer will always pay more than they want/need to.
+# to the maximum price. I have basically turned this vacuum store into a commercial airline. 
 from copy import deepcopy
 
 # Arrays are pre-sorted to make working with them easier
