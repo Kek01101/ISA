@@ -18,7 +18,7 @@ while stamp != data[real][0]:
     if stamp == data[real][0]:
         break
     elif stamp < data[real][0]:
-        high = real
+        high = real - 1
     else:
-        low = real
+        low = real + 1
 print(data[real][1])
