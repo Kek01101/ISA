@@ -2,7 +2,7 @@
 a = input("Please input a number: ")
 for a in range(3,int(a)+1):
     prime = True
-    b = a
+    b = a//2
     while b > 1:
         if float(a/b).is_integer() and float(a/b) != 1.0:
             prime = False
