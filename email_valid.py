@@ -27,3 +27,34 @@ test_emails_2 = ["a@aol.com", "d@.g.com", "e123g@abc.sg", "sk123@.abcgmail.com"]
 print(validEmails(test_emails_2))
 my_test = ["@@", "thing@abc..com", "bigG@this.is.a.long.email.com", "this.before@exists.com"]
 print(validEmails(my_test))
+
+
+# This function solves the issue with the intended solution, rather than with Python logic
+def validEmailsTwo(emails):
+    valids = []
+    for email in emails:
+        count = 0
+        per_count = 0
+        lastchar = ""
+        for char in email:
+            if char == "@":
+                if lastchar == ".":
+                    break
+                else:
+                    count += 1
+            elif char == ".":
+                if count == 0 or lastchar == "." or lastchar == "@":
+                    count = 0
+                    break
+                else:
+                    per_count += 1
+            lastchar = char
+        if count == 1 and per_count >= 1:
+            valids.append(True)
+        else:
+            valids.append(False)
+    return valids
+
+print(validEmailsTwo(test_emails))
+print(validEmailsTwo(test_emails_2))
+print(validEmailsTwo(my_test))
