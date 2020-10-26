@@ -5,6 +5,7 @@ import csv
 
 
 def codify(month, year):
+    #This function generates and returns a random code based upon month and year inputs
     code = month + year
     total = 0
     for num in str(code):
@@ -13,6 +14,7 @@ def codify(month, year):
 
 
 def sSort(nums, names):
+    #Sorts the nums array with selection sort, and ensures that the linked names array has the same indexed codes.
     for a in range(0, len(nums)-1):
         min = a
         for b in range(a+1, len(nums)-1):
