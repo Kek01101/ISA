@@ -1,4 +1,4 @@
-# 11/9/2020, Nicolas Keck, Converts a binary number into its denary equivalent
+# 11/9/2020, Nicolas Keck, Functions for handling binary conversion
 
 # Helper functions
 
