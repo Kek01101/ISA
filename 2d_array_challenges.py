@@ -32,3 +32,12 @@ print(grid[0][0])
 print(grid[1][1])
 print(grid[2][2])
 print(grid[3][3])
+
+
+# Ib question test(Nov 2019 Paper 1, Question 13b):
+def isValidMatrix(N, A):
+    valid = True
+    for a in range(N):
+        for b in range(N):
+            if a == b or a == (b+1) or a == (b-1):
+                if A[a][b] == 0 t
