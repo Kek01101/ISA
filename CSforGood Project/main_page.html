@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <title>Effectiveness of NYC recycling program</title>
+    </head>
+    <style>
+    body {
+        background: rgb(0,0,0);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    /* Create two equal columns that sits next to each other */
+    .column {
+      flex: 50%;
+      padding: 10px;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    h2 {
+        color: white;
+    }
+
+    h3 {
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
+
+    label {
+        color: white;
+    }
+    </style>
+    </head>
+    <body>
+
+    <h1>Effectiveness of New York City Recycling Program Over time - #CSForGood</h1>
+    <p>This project was created to demonstrate the effectiveness of the NYC recycling program
+    over time. It does this by allowing the user to compare recycling data from different districts
+    at different times of the year.</p>
+    <h3>How to use:</h3>
+    <p>To use select the years/months/districts you want to include
+    in your datasets and click "submit." You can also decide whether you want
+    data sorted from high to low, or low to high.</p>
+    <p>Be aware that each column needs to be submitted separately.</p>
+    <form name = "rest" method="post" action=".">
+        <p>To reset click on this reset button:</p>
+        <input type="hidden" name="reset" value="reset">
+        <input type="submit" value="Reset">
+    </form>
+    <div class="row">
+      <div class="column" style="background: rgb(41, 41, 41);">
+        <div>
+        <!--These are the query selectors for each type of query -->
+        <!-- The year form -->
+        <form name="left_form" method="post" action=".">
+        <input type="hidden" name="left_hidden" value="left">
+        <p>Select years for comparison:</p>
+          <input type="checkbox" id="2016" name="left_2016" value="2016">
+          <label for="2016"> 2016</label><br>
+          <input type="checkbox" id="2017" name="left_2017" value="2017">
+          <label for="2017"> 2017</label><br>
+          <input type="checkbox" id="2018" name="left_2018" value="2018">
+          <label for="2018"> 2018</label><br>
+          <input type="checkbox" id="2019" name="left_2019" value="2019">
+          <label for="2019"> 2019</label>
+        <!-- The month form -->
+        <p>Select months for comparison:</p>
+          <input type="checkbox" id="january" name="left_january" value="January">
+          <label for="january"> January</label><br>
+          <input type="checkbox" id="february" name="left_february" value="February">
+          <label for="february"> February</label><br>
+          <input type="checkbox" id="march" name="left_march" value="March">
+          <label for="march"> March</label><br>
+          <input type="checkbox" id="april" name="left_april" value="April">
+          <label for="april"> April</label><br>
+          <input type="checkbox" id="may" name="left_may" value="May">
+          <label for="may"> May</label><br>
+          <input type="checkbox" id="june" name="left_june" value="June">
+          <label for="june"> June</label><br>
+          <input type="checkbox" id="july" name="left_july" value="July">
+          <label for="july"> July</label><br>
+          <input type="checkbox" id="august" name="left_august" value="August">
+          <label for="august"> August</label><br>
+          <input type="checkbox" id="september" name="left_september" value="September">
+          <label for="september"> September</label><br>
+          <input type="checkbox" id="october" name="left_october" value="October">
+          <label for="october"> October</label><br>
+          <input type="checkbox" id="november" name="left_november" value="November">
+          <label for="november"> November</label><br>
+          <input type="checkbox" id="december" name="left_december" value="December">
+          <label for="december"> December</label>
+        <!-- The district form -->
+        <p>Select districts for comparison</p>
+            <input type="checkbox" id="brooklyn_north" name="left_brooklyn_north" value="Brooklyn North">
+            <label for="brooklyn_north"> Brooklyn North</label><br>
+            <input type="checkbox" id="brooklyn_south" name="left_brooklyn_south" value="Brooklyn South">
+            <label for="brooklyn_south"> Brooklyn South</label><br>
+            <input type="checkbox" id="bronx" name="left_bronx" value="Bronx">
+            <label for="bronx"> Bronx</label><br>
+            <input type="checkbox" id="manhattan" name="left_manhattan" value="Manhattan">
+            <label for="manhattan"> Manhattan</label><br>
+            <input type="checkbox" id="queens_east" name="left_queens_east" value="Queens East">
+            <label for="queens_east"> Queens East</label><br>
+            <input type="Checkbox" id="queens_west" name="left_queens_west" value="Queens West">
+            <label for="queens_west"> Queens West</label>
+        <!-- The sorting method selection -->
+        <p>Select sorting method for data:</p>
+        <select name="left_sorting", id="left_sorts">
+            <option value="hi/lo">High to low</option>
+            <option value="lo/hi">Low to high</option>
+        </select><br>
+        <input type="submit" value="Submit">
+        </form>
+        </div>
+        <iframe src="http://nicolaskeck.pythonanywhere.com/frame1" style="width:650px;height:500px" title="frame1"></iframe>
+      </div>
+      <div class="column" style="background: rgb(32, 32, 39);">
+        <div>
+        <!--These are the query selectors for each type of query -->
+        <!-- The year form -->
+        <form name="right_form" method="post" action=".">
+        <input type="hidden" name="right_hidden" value="right">
+        <p>Select years for comparison:</p>
+          <input type="checkbox" id="2016" name="right_2016" value="2016">
+          <label for="2016"> 2016</label><br>
+          <input type="checkbox" id="2017" name="right_2017" value="2017">
+          <label for="2017"> 2017</label><br>
+          <input type="checkbox" id="2018" name="right_2018" value="2018">
+          <label for="2018"> 2018</label><br>
+          <input type="checkbox" id="2019" name="right_2019" value="2019">
+          <label for="2019"> 2019</label>
+        <!-- The month form -->
+        <p>Select months for comparison:</p>
+          <input type="checkbox" id="january" name="right_january" value="January">
+          <label for="january"> January</label><br>
+          <input type="checkbox" id="february" name="right_february" value="February">
+          <label for="february"> February</label><br>
+          <input type="checkbox" id="march" name="right_march" value="March">
+          <label for="march"> March</label><br>
+          <input type="checkbox" id="april" name="right_april" value="April">
+          <label for="april"> April</label><br>
+          <input type="checkbox" id="may" name="right_may" value="May">
+          <label for="may"> May</label><br>
+          <input type="checkbox" id="june" name="right_june" value="June">
+          <label for="june"> June</label><br>
+          <input type="checkbox" id="july" name="right_july" value="July">
+          <label for="july"> July</label><br>
+          <input type="checkbox" id="august" name="right_august" value="August">
+          <label for="august"> August</label><br>
+          <input type="checkbox" id="september" name="right_september" value="September">
+          <label for="september"> September</label><br>
+          <input type="checkbox" id="october" name="right_october" value="October">
+          <label for="october"> October</label><br>
+          <input type="checkbox" id="november" name="right_november" value="November">
+          <label for="november"> November</label><br>
+          <input type="checkbox" id="december" name="right_december" value="December">
+          <label for="december"> December</label>
+        <!-- The district form -->
+        <p>Select districts for comparison</p>
+            <input type="checkbox" id="brooklyn_north" name="right_brooklyn_north" value="Brooklyn North">
+            <label for="brooklyn_north"> Brooklyn North</label><br>
+            <input type="checkbox" id="brooklyn_south" name="right_brooklyn_south" value="Brooklyn South">
+            <label for="brooklyn_south"> Brooklyn South</label><br>
+            <input type="checkbox" id="bronx" name="right_bronx" value="Bronx">
+            <label for="bronx"> Bronx</label><br>
+            <input type="checkbox" id="manhattan" name="right_manhattan" value="Manhattan">
+            <label for="manhattan"> Manhattan</label><br>
+            <input type="checkbox" id="queens_east" name="right_queens_east" value="Queens East">
+            <label for="queens_east"> Queens East</label><br>
+            <input type="Checkbox" id="queens_west" name="right_queens_west" value="Queens West">
+            <label for="queens_west"> Queens West</label>
+        <!-- The sorting method selection -->
+        <p>Select sorting method for data:</p>
+        <select name="right_sorting", id="right_sorts">
+            <option value="hi/lo">High to low</option>
+            <option value="lo/hi">Low to high</option>
+        </select><br>
+        <input type="submit" value="Submit">
+        </form>
+        </div>
+        <iframe src="http://nicolaskeck.pythonanywhere.com/frame2" style="width:650px;height:500px" title="frame2"></iframe>
+      </div>
+    </div>
+    </body>
+</html>
