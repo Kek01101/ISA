@@ -1,6 +1,6 @@
 from copy import deepcopy
 from random import random, randint
-from sys import exit
+from sys import exit, argv
 
 
 """
@@ -224,11 +224,23 @@ Two startup options:
 1 - Create random tours and train
 2 - Load a list of old tours to train
 """
+if len(argv) != 2:
+    raise SystemError("Usage: python genetic.py n\nn=1: Create pool at runtime\nn=2: Load pool at runtime from load_solutions.txt")
 # Startup option 1 - Creating random tours
-solutions = starting_pool(100)
+if argv[1] == '1':
+    solutions = starting_pool(100)
 
 # Startup option 2 - Loading a list of old tours
 # TODO: Implement loading lists of old tours, and selection between the two startup options
+if argv[1] == '2':
+    solutions = []
+    with open("load_solutions.txt", "r+") as file:
+        for line in file.readlines():
+            for letter in deepcopy(line.strip()):
+                pass
+                # Fix this later
+    print(solutions)
+raise NotImplementedError
 
 # Main loop - Commented prints are for debugging purposes
 generation = 0
