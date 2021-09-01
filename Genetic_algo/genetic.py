@@ -5,7 +5,7 @@ from sys import exit, argv
 
 """
 BIG TODOS:
-Implement loading, find theoretical lower bound, and:
+Theoretical lower bound
 All three types of crossover
 Order vs cycle crossover
 PMX vs CX
