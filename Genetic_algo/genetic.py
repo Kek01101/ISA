@@ -64,7 +64,7 @@ def converter(solutions):
 # Evaluation function
 ## Evaluates the lengths of letter solutions in a list and returns the list, sorted from best-performing to worst
 ## Also checks to see if the termination condition has been met - current condition is reaching fitness of 1000
-def evaluate(solutions):
+def evaluate(solutions, goal):
     finished = False
     ABC_solutions = converter(solutions)
     for a in range(len(ABC_solutions)):
@@ -72,7 +72,7 @@ def evaluate(solutions):
         for num in ABC_solutions[a]:
             total += num
         solutions[a] = [solutions[a], total]
-        if total <= 1400:
+        if total <= goal:
             finished = True
     if finished:
         solutions = sorted(solutions, key=lambda l:l[1])
@@ -142,7 +142,7 @@ def SUS(wheel, N):
 
 # Cycle Crossover Function
 ## Performs cycle crossover by ensuring that every city maintains the position it had in at least one of the parents
-def cycle_crossover(solutions): # TODO: See if this is actually working properly
+def cycle_crossover(solutions): # TODO: This is implemented very inefficiently, can be definitely be improved
     children = []
     for p1 in solutions:
         for p2 in solutions:
@@ -168,7 +168,7 @@ def radiation(solutions, N):
         child = solutions[randint(0, len(solutions)-1)]
         l1 = randint(0, len(child)-1)
         l2 = randint(0, len(child)-1)
-        child[l1], child[l2] = child[l2], child[l1] # TODO: Make sure this code works - it should
+        child[l1], child[l2] = child[l2], child[l1] # TODO: Make sure this code works - it does
         children.append(child)
     return children
 
@@ -216,31 +216,32 @@ def sanity(solutions):
 
 """"
 Main genetic algorithim loop
-
 Each generation is made up of at least 100 individuals, around 50 of them should be produced from the crossover, 
 and the rest from mutation. - Hypothetically
-
 Two startup options:
 1 - Create random tours and train
 2 - Load a list of old tours to train
 """
-if len(argv) != 2:
-    raise SystemError("Usage: python genetic.py n\nn=1: Create pool at runtime\nn=2: Load pool at runtime from load_solutions.txt")
+if len(argv) != 4:
+    raise SystemError("Usage: python genetic.py n goal last_gen\nn=1: Create pool at runtime\nn=2: "
+                      "Load pool at runtime from load_solutions.txt\nlast_gen=1: Best generation reset after 100"
+                      "generations of no progress\nlast_gen=2: No generational resets")
 # Startup option 1 - Creating random tours
 if argv[1] == '1':
     solutions = starting_pool(100)
 
 # Startup option 2 - Loading a list of old tours
-# TODO: Implement loading lists of old tours, and selection between the two startup options
 if argv[1] == '2':
     solutions = []
     with open("load_solutions.txt", "r+") as file:
         for line in file.readlines():
-            for letter in deepcopy(line.strip()):
-                pass
-                # Fix this later
-    print(solutions)
-raise NotImplementedError
+            newline = []
+            for letter in line.strip():
+                # This is a pretty lazy way of doing things, but I can't really be bothered
+                if letter not in ['[', ']', ',', '\n', ' ', "'", '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
+                    newline.append(letter)
+            solutions.append(newline)
+
 
 # Main loop - Commented prints are for debugging purposes
 generation = 0
@@ -252,7 +253,7 @@ while True:
     generation += 1
     # Evaluating the fitness of every solution
     # print('Starting solutions:')
-    solutions = evaluate(solutions)
+    solutions = evaluate(solutions, int(argv[2]))
     # print('\nEvaluation format:')
     # print(solutions)
     if best_solution > solutions[0][1]:
@@ -263,18 +264,19 @@ while True:
           f'Generation size: {len(solutions)}, Generation best: {solutions[0][1]}')
 
     # Resets to best generation if the last 100 generations have gone nowhere - Mixed results at 15
-    last_gens[gens_counter] = solutions[0][1]
-    progress = False
-    for total in last_gens:
-        if total <= best_solution:
-            progress = True
-    if not progress:
-        print('NOTICE: Best generation not exceeded in last fifteen generations, reverting')
-        solutions = best_generation
-    if gens_counter == 99:
-        gens_counter = 0
-    else:
-        gens_counter += 1
+    if str(argv[3]) == 1:
+        last_gens[gens_counter] = solutions[0][1]
+        progress = False
+        for total in last_gens:
+            if total <= best_solution:
+                progress = True
+        if not progress:
+            print('NOTICE: Best generation not exceeded in last 100 generations, reverting')
+            solutions = best_generation
+        if gens_counter == 99:
+            gens_counter = 0
+        else:
+            gens_counter += 1
 
     # Creating a wheel for the SUS
     wheel = wheeler(solutions)
